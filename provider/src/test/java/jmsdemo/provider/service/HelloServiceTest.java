@@ -32,12 +32,12 @@ public class HelloServiceTest {
     @Test
     public void sayHelloAgain() {
 
-        Date start = new Date();
+        long start = System.currentTimeMillis();
 
         String name = "Lily";
         String res = helloService.sayHelloAgain(name);
-        Date end = new Date();
-        System.out.println(res + "。用时" + (end.getTime() - start.getTime()) + "毫秒");
+        long end = System.currentTimeMillis();
+        System.out.println(res + "。用时" + (end - start) + "毫秒");
     }
 
     /**
@@ -76,10 +76,10 @@ public class HelloServiceTest {
 
         @Override
         public void run() {
-            Date start = new Date();
+            long start = System.currentTimeMillis();
             String res = helloService.sayHelloAgain(name);
-            Date end = new Date();
-            System.out.println(String.format("收到%s的回复：%s, 用时%d毫秒", name, res, end.getTime() - start.getTime()));
+            long end = System.currentTimeMillis();
+            System.out.println(String.format("收到%s的回复：%s, 用时%d毫秒", name, res, end - start));
 
         }
 
